@@ -27,7 +27,7 @@
 }
 
 .main {
-    background-color: lightgreen;
+    background-color: #eaeaea;
     width: 1500px;
     height: 95vh;
     position: absolute;
@@ -40,42 +40,95 @@
 .main-left {
     width: 30%;
     height: 100%;
-    background-color: red;
 }
 
 .my-account {
     width: 100%;
     height: 60px;
     background-color: #eaeaea;
-}
-.my-account {
     border-right: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-account .container-img-account {
+    margin-left: 10px;
 }
 
 .bell-area {
     width: 100%;
-    height: 80px;
+    height: 70px;
     background-color: #8edafc;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.content-bell-area {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.icon-bell {
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-bell i {
+    font-size: 25px;
+    color: #8edafc;
+}
+
+.bell-area p {
+    font-size: 14px;
+    text-decoration: underline;
 }
 
 .find-chat {
     width: 100%;
-    height: 60px;
+    height: 50px;
     background-color: #eaeaea;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-icon {
-    width: 20%;
-    height: 100%;
-    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 80%;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
 }
 
 .search-text {
-    width: 75%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+.search-text input {
+    width: 100%;
     height: 100%;
-    background-color: orange;
+    border-radius: 3px;
+    padding: 5px;
+    border: none;
 }
 
 /*fine main-left*/
@@ -134,11 +187,40 @@
     justify-content: space-around;
     align-items: center;
 }
+.widgets i {
+    font-size: 20px;
+}
 
 .conversation {
     width: 100%;
     height: calc(100% - 120px);
     background-image: url('images/bg-whatsapp.png');
+    display: flex;
+    align-items: center;
+}
+
+.content-conversation {
+    width: 90%;
+    height: 95%;
+    margin: auto;
+}
+
+.message {
+    max-width: 200px;
+    border-radius: 10px;;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+.received{
+    background-color: #d5f9bb;
+    float: left;
+}
+
+.sent {
+    background-color: #fff;
+    float: right;
 }
 
 /*inizio write-mess*/
@@ -147,6 +229,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-left: 1px solid #f9f9f9;
 }
 
 .emote {
