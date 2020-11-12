@@ -89,10 +89,50 @@
 }
 
 .write-mess,
-.friend-account {
+.top-main-rigth {
     width: 100%;
     height: 60px;
     background-color: #eaeaea;
+}
+
+.top-main-rigth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-friend {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-img-account {
+    width: 50px;
+    height: 50px;
+}
+
+.container-img-account img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.data-friend p.name-friend {
+    font-size: 20px;
+}
+
+.data-friend p {
+    font-size: 12px;
+}
+
+.widgets {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .conversation {
@@ -100,5 +140,32 @@
     height: calc(100% - 120px);
     background-image: url('images/bg-whatsapp.png');
 }
+
+/*inizio write-mess*/
+
+.write-mess {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.emote {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.input-mess input {
+    width: 900px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.send-mess {
+    margin-right: 30px;
+    font-size: 30px;
+}
+
+/*fine write-mess*/
 
 /*fine main-right*/
