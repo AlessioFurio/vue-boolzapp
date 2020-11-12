@@ -21,6 +21,7 @@
 
                     <!-- inizio main left -->
                     <div class="main-left">
+
                         <div class="my-account">
                             <div class="container-img-account">
                                 <img src="images/avatar_1.png" alt="">
@@ -31,6 +32,7 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
+
                         <div class="bell-area">
                             <div class="content-bell-area">
                                 <div class="icon-bell">
@@ -42,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="find-chat">
                             <div class="search-icon">
                                 <i class="fas fa-search"></i>
@@ -49,6 +52,22 @@
                             <div class="search-text">
                                 <input type="text" placeholder="Cerca o inizia una nuova chat" name="" value="">
                             </div>
+                        </div>
+
+                        <div class="friend-list">
+                            <ul>
+                                <li class="content-LI" v-for="(element, i) in contacts" @click="selected = i" :class="{active:selected == i}">
+                                    <div class="account-friend">
+                                        <div class="avatar-list">
+                                            <img v-bind:src="contacts[i].avatar"/>
+                                        </div>
+                                        <div class="data-friend">
+                                            <h3>{{element.name}}</h3>
+                                            <p>Non poteva essere altrimenti</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <!-- fine main left -->
@@ -66,11 +85,13 @@
                                     <p>Ultimo accesso oggi alle 15:40</p>
                                 </div>
                             </div>
+
                             <div class="widgets">
                                 <i class="fas fa-search"></i>
                                 <i class="fas fa-paperclip"></i>
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
+
                         </div>
 
                         <div class="conversation">
