@@ -16,7 +16,7 @@
 
         <div id="root">
             <div class="bg">
-                <div class="header-bg"></div>
+
                 <div class="main">
 
                     <!-- inizio main left -->
@@ -57,10 +57,10 @@
                         <div class="friend-list">
 
                             <ul>
-                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="selected = i" :class="{active:selected == i}">
+                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i)" @click="selected = i" :class="{active:selected == i}">
                                     <div class="account-friend">
                                         <div class="avatar-list">
-                                            <img v-bind:src="contacts[i].avatar"/>
+                                            <img v-bind:src="contacts[i].avatar" :alt="element.name"/>
                                         </div>
                                         <div class="data-friend">
                                             <h3>{{element.name}}</h3>
@@ -97,9 +97,9 @@
 
                         <div class="conversation">
                             <div class="content-conversation">
-                                <div class="message" v-for="(element, index) in contacts[0].messages" :class="element.status">
+                                <div class="message" v-for="(element, index) in contacts[indexConversation].messages" :class="element.status">
                                 {{ element.message }}
-                                {{ substr }}
+                                <p>{{ element.time }}</p>
                                 </div>
 
 

@@ -8,7 +8,7 @@ var app = new Vue({
 		messageText: '',
 		messageAfter1Sec: null,
 		search: '',
-		substring: '',
+		indexConversation: 0,
 		contacts: [
 			{
 				name: 'Michele',
@@ -18,7 +18,8 @@ var app = new Vue({
 					{
 						date: '10/01/2020 15:30:55',
 						message: 'Hai portato a spasso il cane?',
-						status: 'sent'
+						status: 'sent',
+						time: '15:30'
 					},
 					{
 						date: '10/01/2020 15:50:00',
@@ -206,7 +207,7 @@ var app = new Vue({
 					{
 						date: '20/03/2020 16:30:00',
 						message: 'Ciao come stai?',
-						status: 'sent'
+						status: 'sent',
 					},
 					{
 						date: '20/03/2020 16:30:55',
@@ -262,6 +263,8 @@ var app = new Vue({
 		]
 	},
 	methods: {
+
+
 		addMessage () {
 			var newMessage = this.messageText.trim();
 			if (!newMessage) {return;}
@@ -275,6 +278,9 @@ var app = new Vue({
             , 1000) // fine set interval
 		},
 
+		goConversation(index) {
+            this.indexConversation = index
+        }
 
 	}, // fine methods
 
