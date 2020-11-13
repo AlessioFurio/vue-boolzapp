@@ -250,10 +250,36 @@ i {
     text-align: center;
     clear: both;
     margin-top: 10px;
+    position: relative;
 }
 .message p {
     font-size: 10px;
     text-align: right;
+}
+
+.window-mess {
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border-radius: 10px;
+}
+.window-mess p {
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.window-mess p:hover {
+    background-color: #c1c1c1;
+}
+
+.show {
+    display: block;
 }
 
 .received{

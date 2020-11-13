@@ -8,6 +8,7 @@ var app = new Vue({
 		messageText: '',
 		messageAfter1Sec: null,
 		search: '',
+		isAddClass: false,
 		indexConversation: 0,
 		contacts: [
 			{
@@ -261,6 +262,7 @@ var app = new Vue({
 				],
 			},
 		]
+
 	},
 	methods: {
 
@@ -268,19 +270,33 @@ var app = new Vue({
 		addMessage () {
 			var newMessage = this.messageText.trim();
 			if (!newMessage) {return;}
-			this.contacts[0].messages.push({message:newMessage, status:'sent'});
+			this.contacts[this.indexConversation].messages.push({message:newMessage, status:'sent'});
 			this.messageText = '';
 
 			this.messageAfter1Sec = setTimeout(() => {
 
-                this.contacts[0].messages.push({message:'ok', status:'received'});
+                this.contacts[this.indexConversation].messages.push({message:'ok', status:'received'});
                 }
             , 1000) // fine set interval
 		},
 
 		goConversation(index) {
             this.indexConversation = index
-        }
+        },
+
+		removeElement(index) {
+            this.contacts[this.indexConversation].messages.splice(index, 1);
+        },
+
+		addClass: function() {
+			if(this.isAddClass == false){
+				this.isAddClass = true;
+			}
+			else {
+				this.isAddClass = false
+			}
+		},
+
 
 	}, // fine methods
 

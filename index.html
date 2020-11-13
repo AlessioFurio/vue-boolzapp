@@ -57,7 +57,7 @@
                         <div class="friend-list">
 
                             <ul>
-                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i)" @click="selected = i" :class="{active:selected == i}">
+                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i)">
                                     <div class="account-friend">
                                         <div class="avatar-list">
                                             <img v-bind:src="contacts[i].avatar" :alt="element.name"/>
@@ -100,8 +100,12 @@
                                 <div class="message" v-for="(element, index) in contacts[indexConversation].messages" :class="element.status">
                                 {{ element.message }}
                                 <p>{{ element.time }}</p>
+                                <i class="fas fa-angle-down" v-on:click="addClass()"></i>
+                                <div class="window-mess" :class="{'show': isAddClass}">
+                                    <p>message info</p>
+                                    <p @click="removeElement(index)">delete message</p>
                                 </div>
-
+                                </div>
 
                             </div>
                         </div>
