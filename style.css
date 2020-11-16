@@ -54,7 +54,7 @@ i {
     width: 100%;
     height: 60px;
     background-color: #eaeaea;
-    border-right: 1px solid black;
+    border-right: 1px solid #c1c1c1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -140,9 +140,9 @@ i {
 }
 
 .friend-list {
-    height: 700px;
+    height: 600px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .friend-list .avatar-list {
@@ -163,10 +163,17 @@ i {
     justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
+    cursor: pointer;
+    transition: all linear 0.50s;
+    border-radius: 5px;
 }
 
-.content-LI.active {
-    background-color: #d1d1d1;
+.content-LI:hover {
+    background-color: #c1c1c1;
+}
+
+.active {
+    background-color: #c1c1c1;
 }
 
 /*fine main-left*/
@@ -195,7 +202,6 @@ i {
     width: 300px;
     height: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
 
@@ -235,12 +241,14 @@ i {
     background-image: url('images/bg-whatsapp.png');
     display: flex;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .content-conversation {
     width: 90%;
     height: 95%;
     margin: auto;
+    position: relative;
 }
 
 .message {
@@ -250,11 +258,21 @@ i {
     text-align: center;
     clear: both;
     margin-top: 10px;
-    position: relative;
 }
+
 .message p {
-    font-size: 10px;
     text-align: right;
+}
+
+.message p span {
+    display: inline-block;
+    font-size: 12px;
+    text-align: right;
+}
+
+.message p span.fa-angle-down {
+    font-size: 16px;
+    cursor: pointer
 }
 
 .window-mess {
@@ -298,7 +316,7 @@ i {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 1px solid #f9f9f9;
+    border-left: 1px solid #c1c1c1;
 }
 
 .emote {

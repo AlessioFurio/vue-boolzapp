@@ -9,18 +9,18 @@ var app = new Vue({
 		messageAfter1Sec: null,
 		search: '',
 		isAddClass: false,
+		addClassActive: false,
 		indexConversation: 0,
 		contacts: [
 			{
 				name: 'Michele',
-				avatar: 'images/avatar_1.png',
+				avatar: '_1',
 				visible: true,
 				messages: [
 					{
 						date: '10/01/2020 15:30:55',
 						message: 'Hai portato a spasso il cane?',
 						status: 'sent',
-						time: '15:30'
 					},
 					{
 						date: '10/01/2020 15:50:00',
@@ -36,7 +36,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Fabio',
-				avatar: 'images/avatar_2.png',
+				avatar: '_2',
 				visible: true,
 				messages: [
 					{
@@ -58,7 +58,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Samuele',
-				avatar: 'images/avatar_3.png',
+				avatar: '_3',
 				visible: true,
 				messages: [
 					{
@@ -80,7 +80,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Luisa',
-				avatar: 'images/avatar_4.png',
+				avatar: '_4',
 				visible: true,
 				messages: [
 					{
@@ -97,7 +97,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Michele',
-				avatar: 'images/avatar_1.png',
+				avatar: '_1',
 				visible: true,
 				messages: [
 					{
@@ -119,7 +119,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Fabio',
-				avatar: 'images/avatar_2.png',
+				avatar: '_2',
 				visible: true,
 				messages: [
 					{
@@ -141,7 +141,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Samuele',
-				avatar: 'images/avatar_3.png',
+				avatar: '_3',
 				visible: true,
 				messages: [
 					{
@@ -163,7 +163,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Luisa',
-				avatar: 'images/avatar_4.png',
+				avatar: '_4',
 				visible: true,
 				messages: [
 					{
@@ -180,7 +180,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Michele',
-				avatar: 'images/avatar_1.png',
+				avatar: '_1',
 				visible: true,
 				messages: [
 					{
@@ -202,7 +202,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Fabio',
-				avatar: 'images/avatar_2.png',
+				avatar: '_2',
 				visible: true,
 				messages: [
 					{
@@ -224,7 +224,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Samuele',
-				avatar: 'images/avatar_3.png',
+				avatar: '_3',
 				visible: true,
 				messages: [
 					{
@@ -246,7 +246,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Luisa',
-				avatar: 'images/avatar_4.png',
+				avatar: '_4',
 				visible: true,
 				messages: [
 					{
@@ -266,7 +266,6 @@ var app = new Vue({
 	},
 	methods: {
 
-
 		addMessage () {
 			var newMessage = this.messageText.trim();
 			if (!newMessage) {return;}
@@ -282,6 +281,7 @@ var app = new Vue({
 
 		goConversation(index) {
             this.indexConversation = index
+			this.addClassActive = true
         },
 
 		removeElement(index) {
@@ -289,14 +289,13 @@ var app = new Vue({
         },
 
 		addClass: function() {
-			if(this.isAddClass == false){
-				this.isAddClass = true;
-			}
-			else {
-				this.isAddClass = false
-			}
+				if(this.isAddClass == false){
+					this.isAddClass = true;
+				}
+				else {
+					this.isAddClass = false
+				}
 		},
-
 
 	}, // fine methods
 
@@ -305,6 +304,10 @@ var app = new Vue({
 			return this.contacts.filter((element)=>{
 				return element.name.toLowerCase().match(this.search.toLowerCase());
 			});
-		}
+		},
+
 	} // fine computed
+
+
+
 });

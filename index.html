@@ -57,14 +57,14 @@
                         <div class="friend-list">
 
                             <ul>
-                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i)">
+                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i), selected = i" :class="{active:selected == i}">
                                     <div class="account-friend">
                                         <div class="avatar-list">
-                                            <img v-bind:src="contacts[i].avatar" :alt="element.name"/>
+                                            <img v-bind:src="'images/avatar' + element.avatar + '.png'" :alt="element.name"/>
                                         </div>
                                         <div class="data-friend">
                                             <h3>{{element.name}}</h3>
-                                            <p>Non poteva essere altrimenti</p>
+                                            <p>{{element.messages[0].message}}</p>
                                         </div>
                                     </div>
                                 </li>
@@ -82,7 +82,9 @@
                                     <img src="images/avatar_1.png" alt="">
                                 </div>
                                 <div class="data-friend">
-                                    <p class="name-friend">Michele</p>
+                                    <p class="name-friend">
+                                        {{contacts[indexConversation].name}}
+                                    </p>
                                     <p>Ultimo accesso oggi alle 15:40</p>
                                 </div>
                             </div>
@@ -99,14 +101,16 @@
                             <div class="content-conversation">
                                 <div class="message" v-for="(element, index) in contacts[indexConversation].messages" :class="element.status">
                                 {{ element.message }}
-                                <p>{{ element.time }}</p>
-                                <i class="fas fa-angle-down" v-on:click="addClass()"></i>
+                                <p>
+                                    <span>{{ element.date }}</span>
+                                    <span class="fas fa-angle-down" v-on:click="addClass(index)"></span>
+                                </p>
+
+                                </div>
                                 <div class="window-mess" :class="{'show': isAddClass}">
                                     <p>message info</p>
-                                    <p @click="removeElement(index)">delete message</p>
+                                    <p @click="removeElement(index)">Click here to delete message</p>
                                 </div>
-                                </div>
-
                             </div>
                         </div>
 
@@ -115,7 +119,7 @@
                                 <i class="far fa-smile"></i>
                             </div>
                             <div class="input-mess">
-                                <input type="text" placeholder="Scrivi un messaggio" v-model="messageText" name="" value="">
+                                <input v-on:keyup.enter="addMessage()" type="text" placeholder="Scrivi un messaggio" v-model="messageText" name="" value="">
                             </div>
                             <div class="send-mess" @click="addMessage()" @click="answer1sec()">
                                 <i class="fas fa-paper-plane"></i>
