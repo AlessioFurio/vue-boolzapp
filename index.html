@@ -57,7 +57,7 @@
                         <div class="friend-list">
 
                             <ul>
-                                <li class="content-LI" v-for="(element, i) in filteredSearch" @click="goConversation(i), selected = i" :class="{active:selected == i}">
+                                <li class="content-LI" v-for="(element, i) in filteredSearch " @click="goConversation(i), selected = i" :class="{active:selected == i}">
                                     <div class="account-friend">
                                         <div class="avatar-list">
                                             <img v-bind:src="'images/avatar' + element.avatar + '.png'" :alt="element.name"/>
@@ -100,16 +100,17 @@
                         <div class="conversation">
                             <div class="content-conversation">
                                 <div class="message" v-for="(element, index) in contacts[indexConversation].messages" :class="element.status">
-                                {{ element.message }}
-                                <p>
-                                    <span>{{ element.date }}</span>
-                                    <span class="fas fa-angle-down" v-on:click="addClass(index)"></span>
-                                </p>
+                                    {{ element.message }}
+                                    <p>
+                                        <span>{{ element.date }}</span>
+                                        <span class="fas fa-angle-down" v-if="element.status == 'sent'" v-on:click="addClass(index)"></span>
+                                    </p>
 
-                                </div>
-                                <div class="window-mess" :class="{'show': isAddClass}">
-                                    <p>message info</p>
-                                    <p @click="removeElement(index)">Click here to delete message</p>
+                                <!-- <div class="window-mess" :class="{'show': isAddClass}"> -->
+                                    <div class="window-mess" v-if="index == indexMessage">
+                                        <p>message info</p>
+                                        <p @click="removeElement(index)">Click here to delete message</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,5 +140,7 @@
 
 
     <script src="main.js" charset="utf-8"></script>
+    <script src="lib/moment/moment.min.js" charset="utf-8"></script>
+
     </body>
 </html>

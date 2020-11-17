@@ -11,6 +11,7 @@ var app = new Vue({
 		isAddClass: false,
 		addClassActive: false,
 		indexConversation: 0,
+		indexMessage: -1,
 		contacts: [
 			{
 				name: 'Michele',
@@ -267,47 +268,65 @@ var app = new Vue({
 	methods: {
 
 		addMessage () {
+			var now = moment().format('h:mm');
 			var newMessage = this.messageText.trim();
 			if (!newMessage) {return;}
-			this.contacts[this.indexConversation].messages.push({message:newMessage, status:'sent'});
+			this.contacts[this.indexConversation].messages.push({message:newMessage, status:'sent', date:now});
 			this.messageText = '';
+
+			this.autoscroll();
 
 			this.messageAfter1Sec = setTimeout(() => {
 
-                this.contacts[this.indexConversation].messages.push({message:'ok', status:'received'});
-                }
-            , 1000) // fine set interval
+                this.contacts[this.indexConversation].messages.push({message:'ok', status:'received',date:now});
+
+				this.autoscroll();
+
+            }, 1000); // fine set interval
 		},
 
 		goConversation(index) {
             this.indexConversation = index
 			this.addClassActive = true
+			this.autoscroll();
         },
 
 		removeElement(index) {
             this.contacts[this.indexConversation].messages.splice(index, 1);
         },
 
-		addClass: function() {
-				if(this.isAddClass == false){
-					this.isAddClass = true;
+		addClass: function(indice) { //
+
+				if(indice != this.indexMessage){
+					this.indexMessage = indice;
+				} else {
+					this.indexMessage = -1;
 				}
-				else {
-					this.isAddClass = false
-				}
+				console.log(indice, this.indexMessage);
+
 		},
+
+		autoscroll () {
+			Vue.nextTick(function(){
+
+				let chatContainer = document.getElementsByClassName('conversation')[0];
+				chatContainer.scrollTop = chatContainer.scrollHeight;
+			});
+		} // funzione scroll messaggi auto
 
 	}, // fine methods
 
 	computed: {
+
 		filteredSearch:function(){
 			return this.contacts.filter((element)=>{
 				return element.name.toLowerCase().match(this.search.toLowerCase());
 			});
 		},
+	}, // fine computed
 
-	} // fine computed
-
-
+	mounted: function() {
+		this.autoscroll(); // attiva lo scroll appena la pagina e' caricata
+	}
 
 });
