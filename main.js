@@ -7,11 +7,13 @@ var app = new Vue({
 		selected: undefined,
 		messageText: '',
 		messageAfter1Sec: null,
-		search: '',
+		searchText: '',
 		isAddClass: false,
 		addClassActive: false,
 		indexConversation: 0,
 		indexMessage: -1,
+		messagesLength: 0,
+		lastMess: 0,
 		contacts: [
 			{
 				name: 'Michele',
@@ -283,6 +285,7 @@ var app = new Vue({
 				this.autoscroll();
 
             }, 1000); // fine set interval
+
 		},
 
 		goConversation(index) {
@@ -293,6 +296,7 @@ var app = new Vue({
 
 		removeElement(index) {
             this.contacts[this.indexConversation].messages.splice(index, 1);
+			this.indexMessage = -1;
         },
 
 		addClass: function(indice) { //
@@ -312,21 +316,34 @@ var app = new Vue({
 				let chatContainer = document.getElementsByClassName('conversation')[0];
 				chatContainer.scrollTop = chatContainer.scrollHeight;
 			});
-		} // funzione scroll messaggi auto
+		}, // funzione scroll messaggi auto
+
+		/*prova*/
+		search() {
+			this.contacts.forEach((contact)=>{
+				if(contact.name.toLowerCase().includes(this.searchText)) {
+					contact.visible = true;
+				}
+				else {
+					contact.visible = false;
+				}
+			});
+		}
 
 	}, // fine methods
 
 	computed: {
 
-		filteredSearch:function(){
-			return this.contacts.filter((element)=>{
-				return element.name.toLowerCase().match(this.search.toLowerCase());
-			});
-		},
+
 	}, // fine computed
+
+
 
 	mounted: function() {
 		this.autoscroll(); // attiva lo scroll appena la pagina e' caricata
-	}
+
+	},
+
+
 
 });

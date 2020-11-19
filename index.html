@@ -50,20 +50,21 @@
                                 <i class="fas fa-search"></i>
                             </div>
                             <div class="search-text">
-                                <input type="text" placeholder="Cerca o inizia una nuova chat" name="" value="" v-model="search">
+                                <input type="text" placeholder="Cerca o inizia una nuova chat" name="" value="" v-model="searchText" @keyup="search">
                             </div>
                         </div>
 
                         <div class="friend-list">
 
                             <ul>
-                                <li class="content-LI" v-for="(element, i) in filteredSearch " @click="goConversation(i), selected = i" :class="{active:selected == i}">
+                                <li class="content-LI" v-for="(element, i) in contacts" v-if="element.visible" @click="goConversation(i), selected = i" :class="{active:selected == i}">
                                     <div class="account-friend">
                                         <div class="avatar-list">
                                             <img v-bind:src="'images/avatar' + element.avatar + '.png'" :alt="element.name"/>
                                         </div>
                                         <div class="data-friend">
                                             <h3>{{element.name}}</h3>
+                                            <p>{{element.date}}</p>
                                             <p>{{element.messages[0].message}}</p>
                                         </div>
                                     </div>
