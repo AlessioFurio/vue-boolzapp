@@ -1,4 +1,4 @@
-
+dayjs.extend(window.dayjs_plugin_customParseFormat);
 
 var app = new Vue({
 	el: '#root',
@@ -270,17 +270,16 @@ var app = new Vue({
 	methods: {
 
 		addMessage () {
-			var now = moment().format('h:mm');
 			var newMessage = this.messageText.trim();
 			if (!newMessage) {return;}
-			this.contacts[this.indexConversation].messages.push({message:newMessage, status:'sent', date:now});
+			this.contacts[this.indexConversation].messages.push({message:newMessage, status:'sent', date: dayjs().format("DD/MM/YYYY HH:mm:ss") });
 			this.messageText = '';
 
 			this.autoscroll();
 
 			this.messageAfter1Sec = setTimeout(() => {
 
-                this.contacts[this.indexConversation].messages.push({message:'ok', status:'received',date:now});
+                this.contacts[this.indexConversation].messages.push({message:'ok', status:'received',date: dayjs().format("DD/MM/YYYY HH:mm:ss") });
 
 				this.autoscroll();
 
@@ -328,6 +327,11 @@ var app = new Vue({
 					contact.visible = false;
 				}
 			});
+		},
+
+		getTime(dataString){
+			return dayjs(dataString, "DD/MM/YYYY HH:mm:ss").format('HH:mm');
+
 		}
 
 	}, // fine methods
